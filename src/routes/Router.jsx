@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import { Home } from "../pages/Home";
