@@ -12,7 +12,7 @@ export const Home = () => {
 	const [selectListId, setSelectListId] = useState();
 	const [tasks, setTasks] = useState([]);
 	const [errorMessage, setErrorMessage] = useState("");
-	const [cookies, setCookie, removeCookie] = useCookies();
+	const [cookies, _setCookie, _removeCookie] = useCookies();
 	const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value);
 	useEffect(() => {
 		axios

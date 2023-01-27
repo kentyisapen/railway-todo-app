@@ -11,7 +11,7 @@ export const EditList = () => {
 	const { listId } = useParams();
 	const [title, setTitle] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [cookies, setCookie, removeCookie] = useCookies();
+	const [cookies, _setCookie, _removeCookie] = useCookies();
 	const handleTitleChange = (e) => setTitle(e.target.value);
 	const onUpdateList = () => {
 		const data = {

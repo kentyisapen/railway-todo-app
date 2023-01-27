@@ -12,7 +12,7 @@ export const NewTask = () => {
 	const [title, setTitle] = useState("");
 	const [detail, setDetail] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [cookies, setCookie, removeCookie] = useCookies();
+	const [cookies, _setCookie, _removeCookie] = useCookies();
 	const navigate = useNavigate();
 	const handleTitleChange = (e) => setTitle(e.target.value);
 	const handleDetailChange = (e) => setDetail(e.target.value);

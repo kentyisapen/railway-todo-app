@@ -9,7 +9,7 @@ import "./editTask.css";
 export const EditTask = () => {
 	const navigate = useNavigate();
 	const { listId, taskId } = useParams();
-	const [cookies, setCookie, removeCookie] = useCookies();
+	const [cookies, _setCookie, _removeCookie] = useCookies();
 	const [title, setTitle] = useState("");
 	const [detail, setDetail] = useState("");
 	const [isDone, setIsDone] = useState();

@@ -7,7 +7,7 @@ import { url } from "../const";
 import "./newList.css";
 
 export const NewList = () => {
-	const [cookies, setCookie, removeCookie] = useCookies();
+	const [cookies, _setCookie, _removeCookie] = useCookies();
 	const navigate = useNavigate();
 	const [title, setTitle] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
