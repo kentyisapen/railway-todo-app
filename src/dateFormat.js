@@ -31,7 +31,7 @@ export const formatDateStringForDatetimeLocal = (dateString) => {
  * @returns {string} YYYY年MM月DD日 HH時MM分SS秒 形式の文字列
  */
 export const formatDateStringForJapanese = (dateString) => {
-  cdate(dateString).text("%Y年%m月%d日 %H時%M分%S秒")
+  return cdate(dateString).text("%Y年%m月%d日 %H時%M分%S秒")
 }
 
 
