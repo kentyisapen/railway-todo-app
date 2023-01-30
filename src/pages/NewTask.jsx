@@ -5,23 +5,36 @@ import { url } from "../const";
 import { Header } from "../components/Header";
 import "./newTask.scss";
 import { useNavigate } from "react-router-dom";
+import { cdate } from "cdate";
 
 export const NewTask = () => {
   const [selectListId, setSelectListId] = useState();
   const [lists, setLists] = useState([]);
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
+  const [limit, setLimit] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [cookies, _setCookie, _removeCookie] = useCookies();
   const navigate = useNavigate();
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleSelectList = (id) => setSelectListId(id);
+  const handleLimitChange = (e) => setLimit(e.target.value);
+
+  const perseLimit = (dateString) => {
+    if (dateString === "" || dateString == null) {
+      return null;
+    } else {
+      return cdate(limit).text("%Y-%m-%dT%H:%M:%SZ");
+    }
+  };
+
   const onCreateTask = () => {
     const data = {
       title: title,
       detail: detail,
       done: false,
+      limit: perseLimit(limit),
     };
 
     axios
@@ -88,6 +101,15 @@ export const NewTask = () => {
             type="text"
             onChange={handleDetailChange}
             className="new-task-detail"
+          />
+          <br />
+          <label>期限</label>
+          <br />
+          <input
+            type="datetime-local"
+            onChange={handleLimitChange}
+            className="new-task-limit"
+            step="1"
           />
           <br />
           <button
