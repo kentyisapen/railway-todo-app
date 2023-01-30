@@ -29,7 +29,9 @@ export const EditTask = () => {
       if (dateString === "" || dateString == null) {
         return null;
       } else {
-        return formatDateStringForRequest(limit);
+        return formatDateStringForRequest(
+          cdate(dateString).add(-9, "h").text()
+        );
       }
     };
 
