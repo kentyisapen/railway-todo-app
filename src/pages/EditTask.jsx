@@ -5,6 +5,11 @@ import { useCookies } from "react-cookie";
 import { url } from "../const";
 import { useNavigate, useParams } from "react-router-dom";
 import "./editTask.scss";
+import { cdate } from "cdate";
+import {
+  formatDateStringForDatetimeLocal,
+  formatDateStringForRequest,
+} from "../dateFormat";
 
 export const EditTask = () => {
   const navigate = useNavigate();
@@ -13,16 +18,26 @@ export const EditTask = () => {
   const [title, setTitle] = useState("");
   const [detail, setDetail] = useState("");
   const [isDone, setIsDone] = useState();
+  const [limit, setLimit] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
   const handleIsDoneChange = (e) => setIsDone(e.target.value === "done");
+  const handleLimitChange = (e) => setLimit(e.target.value);
   const onUpdateTask = () => {
-    console.log(isDone);
+    const perseLimit = (dateString) => {
+      if (dateString === "" || dateString == null) {
+        return null;
+      } else {
+        return formatDateStringForRequest(limit);
+      }
+    };
+
     const data = {
       title: title,
       detail: detail,
       done: isDone,
+      limit: perseLimit(limit),
     };
 
     axios
@@ -67,6 +82,7 @@ export const EditTask = () => {
         setTitle(task.title);
         setDetail(task.detail);
         setIsDone(task.done);
+        setLimit(formatDateStringForDatetimeLocal(task.limit));
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`);
@@ -96,6 +112,16 @@ export const EditTask = () => {
             onChange={handleDetailChange}
             className="edit-task-detail"
             value={detail}
+          />
+          <br />
+          <label>期限</label>
+          <br />
+          <input
+            type="datetime-local"
+            onChange={handleLimitChange}
+            className="new-task-limit"
+            value={limit}
+            step="1"
           />
           <br />
           <div>
