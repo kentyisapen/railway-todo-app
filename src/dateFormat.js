@@ -20,7 +20,7 @@ export const formatDateStringForRequest = (dateString) => {
  * @returns {string} YYYY-MM-DDTHH:MM:SS 形式の文字列
  */
 export const formatDateStringForDatetimeLocal = (dateString) => {
-  return cdate(dateString).text("%Y-%m-%dT%H:%M:%S");
+  return cdate(dateString).utcOffset(0).text("%Y-%m-%dT%H:%M:%S");
 }
 
 /**
@@ -31,7 +31,7 @@ export const formatDateStringForDatetimeLocal = (dateString) => {
  * @returns {string} YYYY年MM月DD日 HH時MM分SS秒 形式の文字列
  */
 export const formatDateStringForJapanese = (dateString) => {
-  return cdate(dateString).text("%Y年%m月%d日 %H時%M分%S秒")
+  return cdate(dateString).utcOffset(0).text("%Y年%m月%d日 %H時%M分%S秒")
 }
 
 
