@@ -143,6 +143,8 @@ const Tasks = (props) => {
                 {task.title}
                 <br />
                 {task.done ? "完了" : "未完了"}
+                <br />
+                {task.limit ? task.limit + "まで" : "期限なし"}
               </Link>
             </li>
           ))}
@@ -165,6 +167,8 @@ const Tasks = (props) => {
               {task.title}
               <br />
               {task.done ? "完了" : "未完了"}
+              <br />
+              {task.limit ? task.limit + "まで" : "期限なし"}
             </Link>
           </li>
         ))}
