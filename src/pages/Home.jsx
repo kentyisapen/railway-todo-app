@@ -5,6 +5,7 @@ import axios from "axios";
 import { Header } from "../components/Header";
 import { url } from "../const";
 import "./home.scss";
+import { cdate } from "cdate";
 
 export const Home = () => {
   const [isDoneDisplay, setIsDoneDisplay] = useState("todo"); // todo->未完了 done->完了
@@ -168,7 +169,9 @@ const Tasks = (props) => {
               <br />
               {task.done ? "完了" : "未完了"}
               <br />
-              {task.limit ? task.limit + "まで" : "期限なし"}
+              {task.limit
+                ? cdate(task.limit).text("%Y年%m月%d日 %H時%M分%S秒") + "まで"
+                : "期限なし"}
             </Link>
           </li>
         ))}
