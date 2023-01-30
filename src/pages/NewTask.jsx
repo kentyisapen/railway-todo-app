@@ -5,7 +5,7 @@ import { url } from "../const";
 import { Header } from "../components/Header";
 import "./newTask.scss";
 import { useNavigate } from "react-router-dom";
-import { cdate } from "cdate";
+import { formatDateStringForRequest } from "../dateFormat";
 
 export const NewTask = () => {
   const [selectListId, setSelectListId] = useState();
@@ -25,7 +25,7 @@ export const NewTask = () => {
     if (dateString === "" || dateString == null) {
       return null;
     } else {
-      return cdate(limit).text("%Y-%m-%dT%H:%M:%SZ");
+      return formatDateStringForRequest(limit);
     }
   };
 
